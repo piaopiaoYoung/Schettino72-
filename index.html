@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vallo | MASTER THE BOUNCE - Precision Tennis Equipment</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Spartan:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --vallo-blue: #002244;
+            --vallo-gold: #D4AF37;
+            --tennis-yellow: #CCFF00;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #ffffff;
+            color: #333;
+        }
+        .hero-bg {
+            background: linear-gradient(rgba(0, 34, 68, 0.6), rgba(0, 34, 68, 0.8)), url('hero-bg.JPG');
+            background-size: cover;
+            background-position: center;
+            background-color: var(--vallo-blue);
+        }
+        .vallo-blue-bg { background-color: var(--vallo-blue); }
+        .vallo-blue-text { color: var(--vallo-blue); }
+        .font-spartan { font-family: 'Spartan', sans-serif; }
+        .card-hover:hover { transform: translateY(-5px); transition: all 0.3s ease; }
+        .social-link:active { transform: scale(0.9); transition: transform 0.1s; }
+        
+        .img-container {
+            background: radial-gradient(circle, #f9fafb 0%, #f3f4f6 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-radius: 2px;
+        }
+
+        .luxury-bg {
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+        .animate-shimmer {
+            background: #f6f7f8;
+            background-image: linear-gradient(to right, #f6f7f8 0%, #edeef1 20%, #f6f7f8 40%, #f6f7f8 100%);
+            background-repeat: no-repeat;
+            background-size: 1000px 100%;
+            animation: shimmer 2s infinite linear forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in { animation: fadeIn 1s ease-out forwards; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center space-x-2">
+                <span class="text-2xl font-bold tracking-tighter vallo-blue-text font-spartan">vallo</span>
+            </a>
+            
+            <div class="hidden md:flex space-x-8 text-sm font-semibold tracking-widest uppercase">
+                <a href="#tech" class="hover:text-blue-900 transition">Technology</a>
+                <a href="#products" class="hover:text-blue-900 transition">Products</a>
+                <a href="#about" class="hover:text-blue-900 transition">Heritage</a>
+                <a href="#oem" class="hover:text-blue-900 transition">OEM Service</a>
+            </div>
+            
+            <div class="flex items-center space-x-6">
+                <button onclick="openAiOmniModal('advisor')" class="hidden md:flex items-center gap-2 text-blue-900 font-bold uppercase text-xs tracking-widest hover:text-yellow-600 transition">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    Ask AI ✨
+                </button>
+                <a href="#contact" class="hidden md:inline-block vallo-blue-bg text-white px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest hover:opacity-90 transition">
+                    Inquiry
+                </a>
+                <button onclick="toggleMobileMenu()" class="md:hidden text-blue-900 focus:outline-none" aria-label="Toggle Menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg">
+            <div class="px-6 py-4 flex flex-col space-y-4 text-sm font-semibold tracking-widest uppercase text-center">
+                <button onclick="openAiOmniModal('advisor'); toggleMobileMenu();" class="text-blue-900 font-bold">✨ Ask AI Concierge</button>
+                <a href="#tech" onclick="toggleMobileMenu()" class="hover:text-blue-900 transition">Technology</a>
+                <a href="#products" onclick="toggleMobileMenu()" class="hover:text-blue-900 transition">Products</a>
+                <a href="#about" onclick="toggleMobileMenu()" class="hover:text-blue-900 transition">Heritage</a>
+                <a href="#oem" onclick="toggleMobileMenu()" class="hover:text-blue-900 transition">OEM Service</a>
+                <a href="#contact" onclick="toggleMobileMenu()" class="vallo-blue-bg text-white px-6 py-3 rounded-sm text-xs font-bold transition mt-2">Inquiry</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Section 1: Hero -->
+    <section class="relative h-screen flex items-center justify-center hero-bg text-white overflow-hidden">
+        <div class="text-center z-10 px-4 mt-16">
+            <img src="vallo.JPG" alt="vallo Logo" class="h-20 md:h-24 mx-auto mb-8 object-contain animate-fade-in drop-shadow-2xl rounded-sm" onerror="this.style.display='none'">
+            
+            <h1 class="text-6xl md:text-8xl font-bold tracking-tighter mb-4 font-spartan animate-fade-in" style="animation-delay: 0.1s;">
+                MASTER THE <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 to-yellow-400">BOUNCE</span>
+            </h1>
+            <p class="text-lg md:text-xl font-light tracking-[0.2em] mb-10 opacity-90 uppercase animate-fade-in" style="animation-delay: 0.3s;">
+                Precision Engineered Tennis Equipment | Est. 2026 Hainan Free Trade Port
+            </p>
+            <div class="flex justify-center space-x-4 animate-fade-in" style="animation-delay: 0.4s;">
+                <a href="#products" class="bg-white text-blue-900 px-10 py-4 rounded-sm font-bold uppercase tracking-widest hover:bg-gray-100 transition shadow-xl">
+                    Explore Pro Series
+                </a>
+                <button onclick="openAiOmniModal('advisor')" class="bg-transparent border border-white text-white px-8 py-4 rounded-sm font-bold uppercase tracking-widest hover:bg-white/10 transition shadow-xl flex items-center gap-2 backdrop-blur-sm">
+                    ✨ AI Concierge
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Authority Bar -->
+    <div class="vallo-blue-bg py-12 relative z-10">
+        <div class="max-w-7xl mx-auto px-6 text-white/80">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="flex flex-col items-center text-center">
+                    <h4 class="text-sm font-bold uppercase tracking-widest">ITF Approved</h4>
+                    <p class="text-[10px] mt-1 font-light">Marshal & General Approval</p>
+                </div>
+                <div class="flex flex-col items-center text-center border-l border-white/10">
+                    <h4 class="text-sm font-bold uppercase tracking-widest">20-Year Heritage</h4>
+                    <p class="text-[10px] mt-1 font-light">Craftsmanship since 2003</p>
+                </div>
+                <div class="flex flex-col items-center text-center border-l border-white/10">
+                    <h4 class="text-sm font-bold uppercase tracking-widest">Global Reach</h4>
+                    <p class="text-[10px] mt-1 font-light">30+ Countries Worldwide</p>
+                </div>
+                <div class="flex flex-col items-center text-center border-l border-white/10">
+                    <h4 class="text-sm font-bold uppercase tracking-widest">Hainan FTP</h4>
+                    <p class="text-[10px] mt-1 font-light">Connected to the World</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 3: Technology -->
+    <section id="tech" class="py-24 bg-gray-50 relative z-10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-16">
+                <div class="md:w-1/2">
+                    <div class="aspect-video bg-gray-200 overflow-hidden rounded-lg shadow-2xl">
+                        <img src="tech.JPG" alt="vallo Ball Technology" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <h2 class="text-4xl font-bold vallo-blue-text mb-8 tracking-tight font-spartan">The Tech Passport: <br><span class="font-light">Why vallo?</span></h2>
+                    <div class="space-y-10">
+                        <div class="flex gap-6">
+                            <div class="flex-shrink-0 w-12 h-12 rounded-full border border-blue-900 flex items-center justify-center text-blue-900 font-bold">01</div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2 uppercase tracking-wide">Dura-Core™ Technology</h3>
+                                <p class="text-gray-600 leading-relaxed text-sm">Thai natural rubber with a 20-year patented vulcanization process.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-6">
+                            <div class="flex-shrink-0 w-12 h-12 rounded-full border border-blue-900 flex items-center justify-center text-blue-900 font-bold">02</div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2 uppercase tracking-wide">Pro-Felt™ Surface</h3>
+                                <p class="text-gray-600 leading-relaxed text-sm">57% imported high-purity wool for superior grip and performance.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Products -->
+    <section id="products" class="py-24 relative z-10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold vallo-blue-text tracking-widest uppercase mb-4 font-spartan">Precision Series</h2>
+                <div class="w-20 h-1 bg-yellow-400 mx-auto mb-6"></div>
+                <p class="text-gray-500 text-sm font-light max-w-2xl mx-auto">Explore our complete lineup of precision-engineered tennis balls, categorized for professional matches, elite training, and youth development.</p>
+            </div>
+
+            <!-- Match Series -->
+            <div class="mb-20">
+                <h3 class="text-xl font-bold vallo-blue-text tracking-widest uppercase border-l-4 border-yellow-400 pl-4 mb-8">Match Series</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <div class="group bg-white border border-gray-100 p-8 card-hover shadow-sm flex flex-col text-center">
+                        <div class="mb-6 img-container aspect-[4/3] luxury-bg">
+                            <img src="marshal.JPG" alt="vallo Marshal" class="w-3/5 h-3/5 object-contain group-hover:scale-110 transition duration-700 drop-shadow-2xl">
+                        </div>
+                        <span class="text-[10px] font-bold tracking-[0.3em] text-yellow-600 uppercase">ITF Approved</span>
+                        <h3 class="text-2xl font-bold vallo-blue-text mt-2 mb-4">vallo Marshal</h3>
+                        <p class="text-gray-500 text-sm mb-6 font-light">Specifically designed for high-intensity professional tournaments, offering lasting bounce and solid feedback.</p>
+                        <div class="bg-gray-50 p-4 rounded-sm text-left text-[11px] text-gray-500 font-light space-y-2 mb-4 w-full mt-auto">
+                            <div class="flex justify-between border-b border-gray-200 pb-1"><span>Diameter:</span> <span class="font-semibold text-gray-700">6.35-6.67 cm</span></div>
+                            <div class="flex justify-between border-b border-gray-200 pb-1"><span>Weight:</span> <span class="font-semibold text-gray-700">56.5-59.4 g</span></div>
+                            <div class="flex justify-between border-b border-gray-200 pb-1"><span>Rebound:</span> <span class="font-semibold text-gray-700">135-147 cm</span></div>
+                            <div class="flex justify-between border-b border-gray-200 pb-1"><span>Material:</span> <span class="font-semibold text-gray-700 text-right">Thai Rubber<br>+ 57% Wool</span></div>
+                            <div class="flex justify-between pt-1"><span>Packaging:</span> <span class="font-semibold text-gray-700 text-right">4 Balls/Tin<br>24 Tins/Carton</span></div>
+                        </div>
+                    </div>
+
+                    <div class="group bg-white border border-gray-100 p-8 card-hover shadow-sm flex flex-col text-center">
+                        <div class="mb-6 img-container aspect-[4/3] luxury-bg">
+                            <img src="general.JPG" alt="vallo General" class="w-3/5 h-3/5 object-contain group-hover:scale-110 transition duration-700 drop-shadow-2xl">
+                        </div>
+                        <span class="text-[10px] font-bold tracking-[0.3em] text-yellow-600 uppercase">ITF Approved</span>
+                        <h3 class="text-2xl font-bold vallo-blue-text mt-2 mb-4">vallo General</h3>
+                        <p class="text-gray-500 text-sm mb-6 font-light">Premium pressurized match ball ensuring precise control and exceptional comfort on all courts.</p>
+                        <div class="bg-gray-50 p-4 rounded-sm text-left text-[11px] text-gray-500 font-light space-y-2 mb-4 w-full mt-auto">
+                            <div class="flex justify-between border-b border-gray-200 pb-1"><span>Diameter:</span> <span class="font-semibold text-gray-700">6.35-6.67 cm</span></div>
+                            <div class="flex justify-between border-b border-gray-200 pb-1"><span>Weight:</span> <span class="font-semibold text-gray-700">56.5-59.4 g</span></div>
+                            <div class="flex justify-between border-b border-gray-200 pb-1"><span>Rebound:</span> <span class="font-semibold text-gray-700">135-147 cm</span></div>
+                            <div class="flex justify-between border-b border-gray-200 pb-1"><span>Material:</span> <span class="font-semibold text-gray-700 text-right">Thai Rubber<br>+ 57% Wool</span></div>
+                            <div class="flex justify-between pt-1"><span>Packaging:</span> <span class="font-semibold text-gray-700 text-right">3 Balls/Tin<br>24 Tins/Carton</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Training Series -->
+            <div class="mb-20">
+                <h3 class="text-xl font-bold vallo-blue-text tracking-widest uppercase border-l-4 border-blue-400 pl-4 mb-8">Training Series</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="group bg-white border border-gray-100 p-6 card-hover shadow-sm flex flex-col text-center">
+                        <div class="mb-6 img-container aspect-square luxury-bg">
+                            <img src="pioneer.JPG" alt="vallo Pioneer" class="w-4/5 h-4/5 object-contain group-hover:scale-110 transition duration-700">
+                        </div>
+                        <span class="text-[9px] font-bold tracking-[0.2em] text-blue-600 uppercase">ITF Approved</span>
+                        <h3 class="text-xl font-bold vallo-blue-text mt-2 mb-3">vallo Pioneer</h3>
+                        <p class="text-gray-500 text-xs mb-4 font-light flex-grow leading-relaxed">Exceptional durability and consistent performance, ideal for long-term practice.</p>
+                        <div class="bg-gray-50 p-3 rounded-sm text-left text-[10px] text-gray-500 font-light space-y-1 mb-2 w-full mt-auto">
+                            <div class="flex justify-between border-b border-gray-200 pb-1"><span>Diameter:</span> <span class="font-semibold text-gray-700">6.35-6.67 cm</span></div>
+                            <div class="flex justify-between border-b border-gray-200 pb-1"><span>Weight:</span> <span class="font-semibold text-gray-700">56.5-59.4 g</span></div>
+                            <div class="flex justify-between border-b border-gray-200 pb-1"><span>Rebound:</span> <span class="font-semibold text-gray-700">135-147 cm</span></div>
+                            <div class="flex justify-between border-b border-gray-200 pb-1"><span>Material:</span> <span class="font-semibold text-gray-700 text-right">Thai Rubber<br>+ 57% Wool</span></div>
+                            <div class="flex justify-between pt-1"><span>Packaging:</span> <span class="font-semibold text-gray-700 text-right">60 Balls/Bag<br>4 Bags/Carton</span></div>
+                        </div>
+                    </div>
+
+                    <div class="group bg-white border border-gray-100 p-6 card-hover shadow-sm flex flex-col text-center">
+                        <div class="mb-6 img-container aspect-square luxury-bg">
+                            <img src="captain.JPG" alt="vallo Captain" class="w-4/5 h-4/5 object-contain group-hover:scale-110 transition duration-700">
+                        </div>
+                        <span class="text-[9px] font-bold tracking-[0.2em] text-blue-600 uppercase">Advanced Training</span>
+                        <h3 class="text-xl font-bold vallo-blue-text mt-2 mb-3">vallo Captain</h3>
+                        <p class="text-gray-500 text-xs mb-4 font-light flex-grow leading-relaxed">Thicker core design provides lasting bounce and solid hitting feedback for coaches.</p>
+                        <div class="bg-gray-50 p-3 rounded-sm text-left text-[10px] text-gray-500 font-light space-y-1 mb-2 w-full mt-auto">
+                            <div class="flex justify-between border-b border-gray-200 pb-1"><span>Diameter:</span> <span class="font-semibold text-gray-700">6.35-6.67 cm</span></div>
+                            <div class="flex justify-between border-b border-gray-200 pb-1"><span>Weight:</span> <span class="font-semibold text-gray-700">56.5-59.4 g</span></div>
+                            <div class="flex justify-between border-b border-gray-200 pb-1"><span>Rebound:</span> <span class="font-semibold text-gray-700">135-147 cm</span></div>
+                            <div class="flex justify-between border-b border-gray-200 pb-1"><span>Material:</span> <span class="font-semibold text-gray-700 text-right">Thai Rubber<br>+ 45% Wool</span></div>
+                            <div class="flex justify-between pt-1"><span>Packaging:</span> <span class="font-semibold text-gray-700 text-right">60 Balls/Bag<br>4 Bags/Carton</span></div>
+                        </div>
+                    </div>
+
+                    <div class="group bg-white border border-gray-100 p-6 card-hover shadow-sm flex flex-col text-center">
+                        <div class="mb-6 img-container aspect-square luxury-bg">
+                            <img src="major.JPG" alt="vallo Major" class="w-4/5 h-4/5 object-contain group-hover:scale-110 transition duration-700">
+                        </div>
+                        <span class="text-[9px] font-bold tracking-[0.2em] text-blue-600 uppercase">Essential Training</span>
+                        <h3 class="text-xl font-bold vallo-blue-text mt-2 mb-3">vallo Major</h3>
+                        <p class="text-gray-500 text-xs mb-4 font-light flex-grow leading-relaxed">High cost-performance ratio, perfect for academies and multi-ball drills.</p>
+                        <div class="bg-gray-50 p-3 rounded-sm text-left text-[10px] text-gray-500 font-light space-y-1 mb-2 w-full mt-auto">
+                            <div class="flex justify-between border-b border-gray-200 pb-1"><span>Diameter:</span> <span class="font-semibold text-gray-700">6.35-6.67 cm</span></div>
+                            <div class="flex justify-between border-b border-gray-200 pb-1"><span>Weight:</span> <span class="font-semibold text-gray-700">56.5-59.4 g</span></div>
+                            <div class="flex justify-between border-b border-gray-200 pb-1"><span>Rebound:</span> <span class="font-semibold text-gray-700">135-147 cm</span></div>
+                            <div class="flex justify-between border-b border-gray-200 pb-1"><span>Material:</span> <span class="font-semibold text-gray-700 text-right">Thai Rubber<br>+ Acrylic Felt</span></div>
+                            <div class="flex justify-between pt-1"><span>Packaging:</span> <span class="font-semibold text-gray-700 text-right">60 Balls/Bag<br>4 Bags/Carton</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Youth Development -->
+            <div>
+                <div class="flex items-center justify-between mb-8 flex-wrap gap-4">
+                    <div class="flex items-center gap-4 flex-grow">
+                        <h3 class="text-xl font-bold vallo-blue-text tracking-widest uppercase border-l-4 border-green-400 pl-4">Youth Development</h3>
+                        <div class="h-px bg-gray-200 flex-grow hidden md:block"></div>
+                    </div>
+                    <button onclick="openAiOmniModal('drill')" class="py-2 px-5 bg-green-50 text-green-700 rounded-sm font-bold text-xs uppercase tracking-widest border border-green-100 hover:bg-green-100 transition flex items-center justify-center gap-2 shadow-sm">
+                        ✨ AI Drill Planner
+                    </button>
+                </div>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+                    <div class="group bg-white border border-gray-100 p-5 card-hover shadow-sm flex flex-col text-center">
+                        <div class="mb-4 img-container aspect-square luxury-bg overflow-hidden relative">
+                            <div class="absolute top-2 right-2 w-3 h-3 rounded-full bg-red-500"></div>
+                            <img src="k1.JPG" alt="vallo K1" class="w-4/5 h-4/5 object-contain group-hover:scale-110 transition duration-700">
+                        </div>
+                        <h3 class="text-lg font-bold vallo-blue-text mb-2">vallo K1 (Red)</h3>
+                        <div class="bg-gray-50 p-3 rounded-sm text-left text-[9px] text-gray-500 font-light space-y-1 mt-auto w-full">
+                            <div class="flex justify-between border-b border-gray-200 pb-1"><span>Pressure:</span> <span class="font-bold text-red-500">-75%</span></div>
+                            <div class="flex justify-between border-b border-gray-200 pb-1"><span>Diameter:</span> <span class="font-semibold text-gray-700">~7.5 cm</span></div>
+                            <div class="flex justify-between border-b border-gray-200 pb-1"><span>Weight:</span> <span class="font-semibold text-gray-700">36.0-49.0 g</span></div>
+                            <div class="flex justify-between border-b border-gray-200 pb-1"><span>Rebound:</span> <span class="font-semibold text-gray-700">90-105 cm</span></div>
+                            <div class="flex justify-between pt-1"><span>Packaging:</span> <span class="font-semibold text-gray-700 text-right">48 Balls/Bag<br>5 Bags/Carton</span></div>
+                        </div>
+                    </div>
+
+                    <div class="group bg-white border border-gray-100 p-5 card-hover shadow-sm flex flex-col text-center">
+                        <div class="mb-4 img-container aspect-square luxury-bg overflow-hidden relative">
+                            <div class="absolute top-2 right-2 w-3 h-3 rounded-full bg-orange-500"></div>
+                            <img src="k2.JPG" alt="vallo K2" class="w-4/5 h-4/5 object-contain group-hover:scale-110 transition duration-700">
+                        </div>
+                        <h3 class="text-lg font-bold vallo-blue-text mb-2">vallo K2 (Orange)</h3>
+                        <div class="bg-gray-50 p-3 rounded-sm text-left text-[9px] text-gray-500 font-light space-y-1 mt-auto w-full">
+                            <div class="flex justify-between border-b border-gray-200 pb-1"><span>Pressure:</span> <span class="font-bold text-orange-500">-50%</span></div>
+                            <div class="flex justify-between border-b border-gray-200 pb-1"><span>Diameter:</span> <span class="font-semibold text-gray-700">6.0-6.86 cm</span></div>
+                            <div class="flex justify-between border-b border-gray-200 pb-1"><span>Weight:</span> <span class="font-semibold text-gray-700">36.0-46.9 g</span></div>
+                            <div class="flex justify-between border-b border-gray-200 pb-1"><span>Rebound:</span> <span class="font-semibold text-gray-700">105-120 cm</span></div>
+                            <div class="flex justify-between pt-1"><span>Packaging:</span> <span class="font-semibold text-gray-700 text-right">48 Balls/Bag<br>5 Bags/Carton</span></div>
+                        </div>
+                    </div>
+
+                    <div class="group bg-white border border-gray-100 p-5 card-hover shadow-sm flex flex-col text-center">
+                        <div class="mb-4 img-container aspect-square luxury-bg overflow-hidden relative">
+                            <div class="absolute top-2 right-2 w-3 h-3 rounded-full bg-green-500"></div>
+                            <img src="k3.JPG" alt="vallo K3" class="w-4/5 h-4/5 object-contain group-hover:scale-110 transition duration-700">
+                        </div>
+                        <h3 class="text-lg font-bold vallo-blue-text mb-2">vallo K3 (Green)</h3>
+                        <div class="bg-gray-50 p-3 rounded-sm text-left text-[9px] text-gray-500 font-light space-y-1 mt-auto w-full">
+                            <div class="flex justify-between border-b border-gray-200 pb-1"><span>Pressure:</span> <span class="font-bold text-green-500">-25%</span></div>
+                            <div class="flex justify-between border-b border-gray-200 pb-1"><span>Diameter:</span> <span class="font-semibold text-gray-700">6.30-6.86 cm</span></div>
+                            <div class="flex justify-between border-b border-gray-200 pb-1"><span>Weight:</span> <span class="font-semibold text-gray-700">47.0-51.5 g</span></div>
+                            <div class="flex justify-between border-b border-gray-200 pb-1"><span>Rebound:</span> <span class="font-semibold text-gray-700">120-135 cm</span></div>
+                            <div class="flex justify-between pt-1"><span>Packaging:</span> <span class="font-semibold text-gray-700 text-right">48 Balls/Bag<br>5 Bags/Carton</span></div>
+                        </div>
+                    </div>
+
+                    <div class="group bg-white border border-gray-100 p-5 card-hover shadow-sm flex flex-col text-center">
+                        <div class="mb-4 img-container aspect-square luxury-bg overflow-hidden relative">
+                            <div class="absolute top-2 right-2 w-3 h-3 rounded-full bg-green-600 border border-white"></div>
+                            <img src="k4.JPG" alt="vallo K4" class="w-4/5 h-4/5 object-contain group-hover:scale-110 transition duration-700">
+                        </div>
+                        <h3 class="text-lg font-bold vallo-blue-text mb-2">vallo K4 (Pro Green)</h3>
+                        <div class="bg-gray-50 p-3 rounded-sm text-left text-[9px] text-gray-500 font-light space-y-1 mt-auto w-full">
+                            <div class="flex justify-between border-b border-gray-200 pb-1"><span>Pressure:</span> <span class="font-bold text-green-600">-25%</span></div>
+                            <div class="flex justify-between border-b border-gray-200 pb-1"><span>Material:</span> <span class="font-semibold text-yellow-600">57% Wool</span></div>
+                            <div class="flex justify-between border-b border-gray-200 pb-1"><span>Weight:</span> <span class="font-semibold text-gray-700">47.0-51.5 g</span></div>
+                            <div class="flex justify-between border-b border-gray-200 pb-1"><span>Rebound:</span> <span class="font-semibold text-gray-700">120-135 cm</span></div>
+                            <div class="flex justify-between pt-1"><span>Packaging:</span> <span class="font-semibold text-gray-700 text-right">60 Balls/Bag<br>4 Bags/Carton</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: The Vallo Pipeline -->
+    <section id="about" class="py-24 bg-white border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold vallo-blue-text tracking-tight font-spartan">Vallo Manufacturing</h2>
+                <p class="text-gray-500 font-light mt-4">Pure Manufacturing, Global Trust since 2003.</p>
+            </div>
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="group"><div class="aspect-[4/5] bg-gray-100 rounded-sm overflow-hidden mb-4 luxury-bg"><img src="step1.JPG" alt="Manufacturing" class="w-full h-full object-cover"></div><h4 class="font-bold text-sm uppercase tracking-widest text-blue-900">01 Production</h4></div>
+                <div class="group"><div class="aspect-[4/5] bg-gray-100 rounded-sm overflow-hidden mb-4 luxury-bg"><img src="step2.JPG" alt="Testing" class="w-full h-full object-cover"></div><h4 class="font-bold text-sm uppercase tracking-widest text-blue-900">02 Vallo Lab</h4></div>
+                <div class="group"><div class="aspect-[4/5] bg-gray-100 rounded-sm overflow-hidden mb-4 luxury-bg"><img src="step3.JPG" alt="Packaging" class="w-full h-full object-cover"></div><h4 class="font-bold text-sm uppercase tracking-widest text-blue-900">03 Packaging</h4></div>
+                <div class="group"><div class="aspect-[4/5] bg-gray-100 rounded-sm overflow-hidden mb-4 luxury-bg"><img src="step4.JPG" alt="Delivery" class="w-full h-full object-cover"></div><h4 class="font-bold text-sm uppercase tracking-widest text-blue-900">04 Hainan FTP</h4></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OEM Section -->
+    <section id="oem" class="py-24 vallo-blue-bg text-white relative z-10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-16">
+                <div class="md:w-1/2">
+                    <h2 class="text-4xl font-bold mb-8 font-spartan">OEM & Custom <br><span class="font-light">Your Brand, Our Quality</span></h2>
+                    <p class="text-blue-200 mb-10 leading-relaxed italic font-light">
+                        Full-range customization from ball logos to bespoke tin packaging. Let's build your unique club assets with elite lead times and flexible MOQ.
+                    </p>
+                    <ul class="space-y-6">
+                        <li class="flex items-start gap-4">
+                            <div class="w-6 h-6 rounded-full bg-yellow-400 text-blue-900 flex items-center justify-center flex-shrink-0">✓</div>
+                            <div>
+                                <span class="font-bold block uppercase text-sm tracking-widest">Flexible MOQ</span>
+                                <p class="text-blue-200 text-xs mt-1 font-light">Logo on ball: 200 tins MOQ | Custom packaging: 3000 tins MOQ</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="w-6 h-6 rounded-full bg-yellow-400 text-blue-900 flex items-center justify-center flex-shrink-0">✓</div>
+                            <div>
+                                <span class="font-bold block uppercase text-sm tracking-widest">Elite Lead Time</span>
+                                <p class="text-blue-200 text-xs mt-1 font-light">Shipping within 20 days after detail confirmation.</p>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <div class="mt-12 flex flex-col sm:flex-row gap-4">
+                        <button class="bg-yellow-400 text-blue-900 px-8 py-3 rounded-sm font-bold uppercase tracking-widest hover:bg-yellow-300 transition">
+                            Get Quote
+                        </button>
+                        <button onclick="openAiOmniModal('oem')" class="border border-yellow-400 text-yellow-400 px-8 py-3 rounded-sm font-bold uppercase tracking-widest hover:bg-yellow-400/10 transition flex items-center justify-center gap-2">
+                            ✨ AI Tin Visualizer
+                        </button>
+                    </div>
+                </div>
+                <div class="md:w-1/2 order-1 md:order-2">
+                    <div class="relative group aspect-square bg-blue-900/50 overflow-hidden rounded-sm flex items-center justify-center">
+                        <div class="w-3/5 h-3/5 rounded-full bg-[#CCFF00] shadow-2xl flex items-center justify-center relative">
+                            <div class="w-full h-px bg-white/20 absolute top-1/2 -rotate-12"></div>
+                            <span class="text-blue-900 font-bold text-xl font-spartan animate-pulse">YOUR LOGO</span>
+                        </div>
+                        <div class="absolute inset-0 border-2 border-yellow-400/30 m-4 pointer-events-none"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-gray-50 pt-20 pb-10 border-t border-gray-200 relative z-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <div class="col-span-1 md:col-span-1">
+                    <span class="text-2xl font-bold tracking-tighter vallo-blue-text font-spartan">vallo</span>
+                    <p class="mt-4 text-gray-400 text-xs leading-relaxed uppercase tracking-widest font-bold">
+                        Quiet Luxury <br> High-End competitive equipment
+                    </p>
+                </div>
+                <div>
+                    <h5 class="font-bold text-xs uppercase tracking-[0.2em] mb-6">Contact Us</h5>
+                    <ul class="space-y-3 text-sm text-gray-500 font-light">
+                        <li>Ocean Calling International Trading Co., Ltd.</li>
+                        <li>Email: info@vallotennis.com</li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-bold text-xs uppercase tracking-[0.2em] mb-6">Legal</h5>
+                    <ul class="space-y-3 text-sm text-gray-500 font-light">
+                        <li><a href="#" class="hover:text-blue-900 transition">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-bold text-xs uppercase tracking-[0.2em] mb-6">Connect With Us</h5>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="mailto:info@vallotennis.com" class="social-link w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-gray-400 hover:text-blue-900 hover:border-blue-900 transition"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></a>
+                        <a href="https://www.instagram.com/vallotennisofficial?igsh=MXZkeGM3ZW82aTUzZA%3D%3D&utm_source=qr" target="_blank" class="social-link w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-gray-400 hover:text-blue-900 hover:border-blue-900 transition"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a>
+                        <a href="https://www.tiktok.com/@vallotennis?_r=1&_t=ZP-95fzrqIUgGc" target="_blank" class="social-link w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-gray-400 hover:text-blue-900 hover:border-blue-900 transition"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 448 512" fill="currentColor"><path d="M448 209.91a210.06 210.06 0 0 1-122.77-39.25V349.38A162.55 162.55 0 1 1 185 188.31V278.2a74.62 74.62 0 1 0 52.23 71.18V0l88 0a121.18 121.18 0 0 0 1.86 22.17h0A122.18 122.18 0 0 0 381 102.39a121.43 121.43 0 0 0 67 20.14Z"/></svg></a>
+                        <a href="https://www.linkedin.com/in/飘飘-杨-582694402" target="_blank" class="social-link w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-gray-400 hover:text-blue-900 hover:border-blue-900 transition"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-200 pt-10 text-center text-[10px] text-gray-400 uppercase tracking-widest">
+                &copy; 2026 Ocean Calling (Hainan) International Trading Co., Ltd. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- 💡 OMNI AI MODAL (Simulated Local Logic) -->
+    <div id="aiOmniModal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-blue-900/60 backdrop-blur-sm" onclick="closeAiOmniModal()"></div>
+        <div class="relative w-full max-w-2xl bg-white shadow-2xl rounded-sm overflow-hidden flex flex-col h-[650px] max-h-[90vh]">
+            <div class="p-6 vallo-blue-bg text-white flex justify-between items-center shrink-0">
+                <div>
+                    <h3 id="aiOmniTitle" class="text-xl font-bold font-spartan">✨ vallo AI Concierge</h3>
+                    <p id="aiOmniSubtitle" class="text-xs text-blue-200 mt-1 uppercase tracking-widest">Precision Gear Matching</p>
+                </div>
+                <button onclick="closeAiOmniModal()" class="text-white hover:text-yellow-400 transition">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            
+            <div class="p-6 flex-grow overflow-y-auto bg-gray-50 flex flex-col gap-4" id="aiOmniChatBox">
+            </div>
+            
+            <div class="p-4 border-t border-gray-200 bg-white shrink-0">
+                <div class="flex flex-col gap-2">
+                    <label id="aiOmniInputLabel" class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Describe your needs:</label>
+                    <div class="flex gap-2">
+                        <input type="text" id="aiOmniInput" class="flex-grow border border-gray-300 rounded-sm p-3 text-sm focus:outline-none focus:border-blue-900 focus:ring-1 focus:ring-blue-900">
+                        <button onclick="runAiOmni()" id="aiOmniSubmit" class="vallo-blue-bg text-white px-6 py-3 rounded-sm font-bold text-xs uppercase tracking-widest hover:opacity-90 transition disabled:opacity-50 flex items-center gap-2">
+                            Generate
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Simulated AI Logic Script -->
+    <script>
+        let currentAiMode = 'advisor';
+
+        function toggleMobileMenu() {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        }
+
+        function closeAiOmniModal() { 
+            document.getElementById('aiOmniModal').classList.add('hidden'); 
+        }
+
+        function openAiOmniModal(mode) {
+            currentAiMode = mode;
+            const modal = document.getElementById('aiOmniModal');
+            const title = document.getElementById('aiOmniTitle');
+            const subtitle = document.getElementById('aiOmniSubtitle');
+            const inputLabel = document.getElementById('aiOmniInputLabel');
+            const inputEl = document.getElementById('aiOmniInput');
+            const chatBox = document.getElementById('aiOmniChatBox');
+
+            chatBox.innerHTML = '';
+            inputEl.value = '';
+
+            if (mode === 'advisor') {
+                title.innerHTML = '✨ vallo AI Concierge';
+                subtitle.innerText = 'Precision Gear Matching';
+                inputLabel.innerText = 'Describe your playstyle or court surface:';
+                inputEl.placeholder = 'e.g. I play aggressive baseline on hard courts...';
+                chatBox.innerHTML = `<div class="self-start bg-white p-4 rounded-sm border border-gray-200 shadow-sm text-sm text-gray-700">Welcome to Vallo! Describe your tennis level, playstyle, or club needs. I will match you with the perfect Vallo ball from our database, plus provide a tactical tip! ✨</div>`;
+            } else if (mode === 'drill') {
+                title.innerHTML = '✨ vallo AI Drill Planner';
+                subtitle.innerText = 'Youth Coaching Assistant';
+                inputLabel.innerText = 'Describe your students:';
+                inputEl.placeholder = 'e.g. 8-year-old beginners struggling with forehand...';
+                chatBox.innerHTML = `<div class="self-start bg-white p-4 rounded-sm border border-gray-200 shadow-sm text-sm text-gray-700">Ready to coach! Tell me about your junior players, and I will generate a 30-minute training drill using our Vallo K1-K4 low-compression balls. ✨</div>`;
+            } else if (mode === 'oem') {
+                title.innerHTML = '✨ vallo AI Packaging Visualizer';
+                subtitle.innerText = 'Custom OEM Concept Generator';
+                inputLabel.innerText = 'Describe your club or brand aesthetic:';
+                inputEl.placeholder = 'e.g. A luxury country club, dark green and gold...';
+                chatBox.innerHTML = `<div class="self-start bg-white p-4 rounded-sm border border-gray-200 shadow-sm text-sm text-gray-700">Let's design your custom Vallo tin packaging. Describe your brand's aesthetic, and I will generate a conceptual overview and MOQ details! 🎨✨</div>`;
+            }
+            
+            modal.classList.remove('hidden');
+            setTimeout(() => inputEl.focus(), 100);
+        }
+
+        document.getElementById('aiOmniInput')?.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') runAiOmni();
+        });
+
+        // Simulating AI Response based on your precise Database
+        async function runAiOmni() {
+            const inputEl = document.getElementById('aiOmniInput');
+            const submitBtn = document.getElementById('aiOmniSubmit');
+            const chatBox = document.getElementById('aiOmniChatBox');
+            const userText = inputEl.value.trim();
+
+            if (!userText) return;
+
+            // Display user message
+            chatBox.innerHTML += `
+                <div class="self-end bg-blue-50 p-4 rounded-sm border border-blue-100 shadow-sm text-sm text-blue-900 leading-relaxed max-w-[85%]">
+                    ${userText}
+                </div>
+            `;
+            inputEl.value = '';
+            submitBtn.disabled = true;
+
+            const loadingId = 'loading-' + Date.now();
+            
+            // Show loading state
+            if(currentAiMode === 'oem') {
+                chatBox.innerHTML += `
+                    <div id="${loadingId}" class="self-start bg-white p-4 rounded-sm border border-gray-200 shadow-sm w-[85%]">
+                        <div class="h-48 w-full animate-shimmer rounded-sm flex items-center justify-center">
+                            <span class="text-xs font-bold uppercase tracking-widest text-gray-400">Rendering OEM Concept...</span>
+                        </div>
+                    </div>
+                `;
+            } else {
+                chatBox.innerHTML += `
+                    <div id="${loadingId}" class="self-start bg-white p-4 rounded-sm border border-gray-100 shadow-sm text-sm text-gray-500 flex items-center gap-3 max-w-[85%]">
+                        <div class="w-4 h-4 border-2 border-blue-900 border-t-yellow-400 rounded-full animate-spin"></div>
+                        Analyzing Vallo database...
+                    </div>
+                `;
+            }
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            // Simulate Network Delay (1.5 seconds)
+            await new Promise(resolve => setTimeout(resolve, 1500));
+            document.getElementById(loadingId).remove();
+
+            let responseHTML = "";
+            const textLower = userText.toLowerCase();
+
+            // Local Mock Logic Engine
+            if (currentAiMode === 'oem') {
+                responseHTML = `
+                    <div class="self-start bg-white p-4 rounded-sm border border-gray-200 shadow-sm max-w-[90%]">
+                        <p class="text-xs text-gray-500 uppercase tracking-widest font-bold mb-3">✨ Generated Aesthetic: ${userText}</p>
+                        <div class="w-full h-48 bg-blue-900/5 rounded-sm flex items-center justify-center mb-3 border border-gray-100 relative overflow-hidden">
+                            <span class="text-blue-900 font-spartan font-bold tracking-widest z-10 text-center">CUSTOM MOCKUP<br><span class="text-xs font-light text-gray-500">Based on your input</span></span>
+                            <div class="absolute inset-0 bg-gradient-to-tr from-transparent to-white/40"></div>
+                        </div>
+                        <p class="text-sm text-gray-700 leading-relaxed">
+                            <strong>Customization Details:</strong><br>
+                            To apply this design, our <strong>MOQ for custom tin packaging is 3,000 tins</strong>. If you simply want your logo printed on the ball itself, the MOQ is only <strong>200 tins</strong> (Plate fee: ~$30 USD). <br><br>
+                            Our standard lead time from the Hainan Free Trade Port is roughly 20 days after design approval. Contact us to start production!
+                        </p>
+                    </div>
+                `;
+            } else if (currentAiMode === 'drill') {
+                let ballType = "Vallo K2 (Orange)";
+                if (textLower.includes("beginner") || textLower.includes("5") || textLower.includes("6")) ballType = "Vallo K1 (Red, 75% reduced pressure)";
+                if (textLower.includes("9") || textLower.includes("10") || textLower.includes("advanced")) ballType = "Vallo K3 (Green) or K4 (Pro Green)";
+                
+                responseHTML = `
+                    <div class="self-start bg-white p-5 rounded-sm border border-gray-200 shadow-sm text-sm text-gray-700 leading-relaxed max-w-[90%]">
+                        ✨ <strong>Coach's 30-Min Lesson Plan</strong><br><br>
+                        Based on your class profile, I recommend using <strong>${ballType}</strong> balls. They come in 48 balls/bag packaging.<br><br>
+                        <strong>1. Warm-up (5 mins)</strong>: 'Shadow Swings'. Focus on their footwork and preparation without the ball.<br>
+                        <strong>2. Main Drill (15 mins)</strong>: 'Cone Targets'. The reduced pressure of the Vallo balls keeps the bounce in their optimal strike zone. Have them aim for targets.<br>
+                        <strong>3. Fun Game (10 mins)</strong>: 'Jailbreak'. A low-stress, fun game to build their love for the sport!<br><br>
+                        <em>Pro Tip: Vallo's K-series ensures proper biomechanics development safely.</em>
+                    </div>
+                `;
+            } else { // 'advisor'
+                if (textLower.includes("match") || textLower.includes("pro") || textLower.includes("tournament") || textLower.includes("itf")) {
+                    responseHTML = `
+                        <div class="self-start bg-white p-5 rounded-sm border border-gray-200 shadow-sm text-sm text-gray-700 leading-relaxed max-w-[90%]">
+                            ✨ For competitive match play, the <strong>Vallo Marshal</strong> is your ultimate weapon.<br><br>
+                            It is fully ITF Approved, featuring 57% premium imported Thai wool and a natural rubber core. It comes in a 4-ball tin and delivers a consistent 135-147cm rebound.<br><br>
+                            <strong>💡 Tactical Tip:</strong> The premium felt grips the strings perfectly, so use heavy topspin to push your opponent off the baseline!
+                        </div>
+                    `;
+                } else if (textLower.includes("train") || textLower.includes("coach") || textLower.includes("club") || textLower.includes("durable") || textLower.includes("practice")) {
+                    responseHTML = `
+                        <div class="self-start bg-white p-5 rounded-sm border border-gray-200 shadow-sm text-sm text-gray-700 leading-relaxed max-w-[90%]">
+                            ✨ For high-intensity club training, I highly recommend the <strong>Vallo Pioneer</strong> or <strong>Vallo Captain</strong>.<br><br>
+                            The <strong>Pioneer</strong> features a pressureless core and 57% wool for elite durability, while the <strong>Captain</strong> has a thicker core for coaching feed stability. Both come in 60-ball bags (4 bags/carton).<br><br>
+                            <strong>💡 Tactical Tip:</strong> Use these pressureless balls for high-repetition basket drills—they maintain their bounce for months!
+                        </div>
+                    `;
+                } else if (textLower.includes("kid") || textLower.includes("child") || textLower.includes("young") || textLower.includes("beginner")) {
+                    responseHTML = `
+                        <div class="self-start bg-white p-5 rounded-sm border border-gray-200 shadow-sm text-sm text-gray-700 leading-relaxed max-w-[90%]">
+                            ✨ For youth development, you need our <strong>Vallo Transition Series (K1, K2, K3)</strong>.<br><br>
+                            Depending on age, these balls are decompressed by 75% (Red), 50% (Orange), or 25% (Green). This slows the game down perfectly for beginners to learn proper technique.<br><br>
+                            <strong>💡 Tactical Tip:</strong> Always match the ball compression to the child's height so they are striking the ball at waist level, not head level.
+                        </div>
+                    `;
+                } else {
+                    responseHTML = `
+                        <div class="self-start bg-white p-5 rounded-sm border border-gray-200 shadow-sm text-sm text-gray-700 leading-relaxed max-w-[90%]">
+                            ✨ Welcome to Vallo! If you are looking for tournament quality, check out our ITF Approved <strong>Vallo General (3-ball tin)</strong>. For club training, our <strong>Vallo Major</strong> offers incredible cost-performance in 60-ball bags.<br><br>
+                            Did you know? All our products are crafted with a 20-year patented rubber vulcanization process at our 30,000 sqm facility. Let us know if you need OEM pricing!
+                        </div>
+                    `;
+                }
+            }
+
+            chatBox.innerHTML += responseHTML;
+            chatBox.scrollTop = chatBox.scrollHeight;
+            submitBtn.disabled = false;
+        }
+    </script>
+</body>
+</html>
